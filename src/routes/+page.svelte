@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PaintbrushVertical, User } from '@lucide/svelte';
+	import { PaintbrushVertical, User, Play, PlusCircle, Hash } from '@lucide/svelte';
 
 	let username = $state('');
 </script>
@@ -40,10 +40,31 @@
 			{/if}
 		</form>
 
-		<nav class="flex flex-col gap-3" aria-label="Game options">
-			<button type="button">Play Now</button>
-			<button type="button">Create Lobby</button>
-			<button type="button">Join with Code</button>
+		<nav class="flex w-full max-w-sm flex-col gap-3" aria-label="Game options">
+			<button
+				type="button"
+				disabled={username.length === 0}
+				class="flex items-center justify-center gap-2 rounded-lg bg-purple-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-purple-900/50 transition-all hover:bg-purple-500 hover:shadow-xl hover:shadow-purple-900/60 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-purple-600 disabled:hover:shadow-lg"
+			>
+				<Play class="h-5 w-5" aria-hidden="true" />
+				Play Now
+			</button>
+			<button
+				type="button"
+				disabled={username.length === 0}
+				class="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800/50 px-6 py-3 font-medium text-slate-100 transition-all hover:border-slate-500 hover:bg-slate-700/50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-600 disabled:hover:bg-slate-800/50"
+			>
+				<PlusCircle class="h-5 w-5" aria-hidden="true" />
+				Create Lobby
+			</button>
+			<button
+				type="button"
+				disabled={username.length === 0}
+				class="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800/50 px-6 py-3 font-medium text-slate-100 transition-all hover:border-slate-500 hover:bg-slate-700/50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-600 disabled:hover:bg-slate-800/50"
+			>
+				<Hash class="h-5 w-5" aria-hidden="true" />
+				Join with Code
+			</button>
 		</nav>
 	</div>
 </section>

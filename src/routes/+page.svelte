@@ -29,6 +29,10 @@
 		goto('/play');
 	}
 
+	function handleCreateLobby() {
+		goto('/create');
+	}
+
 	function handleSubmit(e: Event) {
 		e.preventDefault();
 		handlePlayNow();
@@ -99,6 +103,7 @@
 				variant="none"
 				size="lg"
 				disabled={username.length === 0}
+				onclick={handleCreateLobby}
 				class="h-11 border border-slate-600 bg-slate-800/50 text-slate-100 hover:border-slate-500 hover:bg-slate-700/50 focus-visible:ring-purple-500/50"
 			>
 				<CirclePlus class="h-5 w-5" aria-hidden="true" />

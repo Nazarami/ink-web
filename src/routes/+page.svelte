@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PaintbrushVertical, User, Play, CirclePlus, Hash } from '@lucide/svelte';
+	import { Input } from '$lib/components/ui/input';
 
 	let username = $state('');
 
@@ -27,18 +28,18 @@
 				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 					<User class="h-5 w-5 text-slate-400" aria-hidden="true" />
 				</div>
-				<input
+				<Input
 					type="text"
 					id="username"
 					name="username"
 					bind:value={username}
 					placeholder="Enter your name"
-					maxlength="20"
+					maxlength={20}
 					autocomplete="username"
 					required
 					aria-required="true"
 					aria-describedby={username.length > 0 ? 'username-count' : undefined}
-					class="w-full rounded-lg border border-slate-700 bg-slate-800/50 py-3 pr-4 pl-10 text-slate-100 placeholder-slate-500 transition-colors focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 focus:outline-none"
+					class="h-12 border-slate-700 bg-slate-800/50 pl-10 text-slate-100 placeholder:text-slate-500 focus-visible:border-purple-500 focus-visible:ring-purple-500/50"
 				/>
 			</div>
 			{#if username.length > 0}

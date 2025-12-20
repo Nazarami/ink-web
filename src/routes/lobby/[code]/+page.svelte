@@ -225,39 +225,45 @@
 		</div>
 
 		<!-- Players Bar -->
-		<div
-			class="mb-4 flex items-center gap-3 overflow-x-auto rounded-xl border border-slate-700 bg-slate-800/30 p-3 md:mb-3"
-		>
-			<div class="flex shrink-0 items-center gap-2">
-				<Users class="h-4 w-4 text-purple-400" />
-				<span class="text-xs font-medium text-slate-400">Players</span>
-			</div>
-			<div class="h-6 w-px shrink-0 bg-slate-700"></div>
-			<div class="flex gap-2">
-				{#each players.toSorted((a, b) => b.score - a.score) as player, i (player.id)}
-					<div
-						class="flex shrink-0 items-center gap-2 rounded-lg px-3 py-1.5 text-sm {player.hasGuessed
-							? 'bg-green-500/10'
-							: ''} {player.isDrawing ? 'bg-purple-500/10' : 'bg-slate-800/50'}"
-					>
-						<span class="text-xs font-medium text-slate-500">#{i + 1}</span>
+		<div class="relative mb-4 md:mb-3">
+			<div
+				class="flex items-center gap-3 overflow-x-auto rounded-xl border border-slate-700 bg-slate-800/30 p-3 pr-8"
+			>
+				<div class="flex shrink-0 items-center gap-2">
+					<Users class="h-4 w-4 text-purple-400" />
+					<span class="text-xs font-medium text-slate-400">Players</span>
+				</div>
+				<div class="h-6 w-px shrink-0 bg-slate-700"></div>
+				<div class="flex gap-2">
+					{#each players.toSorted((a, b) => b.score - a.score) as player, i (player.id)}
 						<div
-							class="flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium {player.isDrawing
-								? 'bg-purple-500/20 text-purple-400'
-								: player.hasGuessed
-									? 'bg-green-500/20 text-green-400'
-									: 'bg-slate-700 text-slate-400'}"
+							class="flex shrink-0 items-center gap-2 rounded-lg px-3 py-1.5 text-sm {player.hasGuessed
+								? 'bg-green-500/10'
+								: ''} {player.isDrawing ? 'bg-purple-500/10' : 'bg-slate-800/50'}"
 						>
-							{player.name.charAt(0).toUpperCase()}
+							<span class="text-xs font-medium text-slate-500">#{i + 1}</span>
+							<div
+								class="flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium {player.isDrawing
+									? 'bg-purple-500/20 text-purple-400'
+									: player.hasGuessed
+										? 'bg-green-500/20 text-green-400'
+										: 'bg-slate-700 text-slate-400'}"
+							>
+								{player.name.charAt(0).toUpperCase()}
+							</div>
+							<span class="text-slate-200">{player.name}</span>
+							{#if player.isDrawing}
+								<Pencil class="h-3 w-3 text-purple-400" />
+							{/if}
+							<span class="text-xs font-medium text-purple-400">{player.score}</span>
 						</div>
-						<span class="text-slate-200">{player.name}</span>
-						{#if player.isDrawing}
-							<Pencil class="h-3 w-3 text-purple-400" />
-						{/if}
-						<span class="text-xs font-medium text-purple-400">{player.score}</span>
-					</div>
-				{/each}
+					{/each}
+				</div>
 			</div>
+			<!-- Fade overlay -->
+			<div
+				class="pointer-events-none absolute top-0 right-0 bottom-0 w-12 rounded-r-xl bg-gradient-to-l from-slate-900/80 to-transparent"
+			></div>
 		</div>
 
 		<!-- Main Game Area -->

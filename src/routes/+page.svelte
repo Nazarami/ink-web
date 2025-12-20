@@ -130,9 +130,7 @@
 				<Dialog.Content>
 					<Dialog.Header>
 						<Dialog.Title>Join a Lobby</Dialog.Title>
-						<Dialog.Description>
-							Enter the lobby code to join your friends.
-						</Dialog.Description>
+						<Dialog.Description>Enter the lobby code to join your friends.</Dialog.Description>
 					</Dialog.Header>
 					<form onsubmit={handleJoinLobby} class="space-y-4">
 						<div>

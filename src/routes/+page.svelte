@@ -15,13 +15,20 @@
 	$effect(() => {
 		if (browser) {
 			if (!mounted) {
-				username = localStorage.getItem('ink-username') ?? '';
+				username = (localStorage.getItem('ink-username') ?? '').trim();
 				mounted = true;
 			} else {
-				localStorage.setItem('ink-username', username);
+				localStorage.setItem('ink-username', username.trimEnd());
 			}
 		}
 	});
+
+	function handleUsernameInput(e: Event) {
+		const input = e.target as HTMLInputElement;
+		// Remove leading whitespace and collapse multiple spaces into one
+		input.value = input.value.trimStart().replace(/  +/g, ' ');
+		username = input.value;
+	}
 
 	function handlePlayNow() {
 		goto('/play');
@@ -78,7 +85,8 @@
 					type="text"
 					id="username"
 					name="username"
-					bind:value={username}
+					value={username}
+					oninput={handleUsernameInput}
 					placeholder="Enter your name"
 					maxlength={20}
 					autocomplete="username"

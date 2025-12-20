@@ -35,7 +35,7 @@
 	}
 
 	function handleCreateLobby() {
-		goto('/create');
+		goto('/lobby/create');
 	}
 
 	function handleJoinLobby(e: Event) {

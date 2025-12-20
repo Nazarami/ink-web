@@ -270,6 +270,12 @@
 		<div class="flex min-h-0 flex-1 flex-col gap-5 md:gap-4">
 			<!-- Canvas Area -->
 			<div class="flex min-h-0 flex-1 flex-col gap-4">
+				<!-- Drawing indicator -->
+				<div class="flex items-center gap-2 text-sm text-slate-400">
+					<Pencil class="h-4 w-4 text-purple-400" />
+					<span><span class="font-medium text-slate-200">{currentDrawer}</span> is drawing</span>
+				</div>
+
 				<!-- Canvas -->
 				<div
 					class="relative min-h-[320px] flex-1 overflow-hidden rounded-xl border border-slate-700 bg-slate-900 md:min-h-0"
@@ -278,14 +284,6 @@
 						class="absolute inset-0 h-full w-full cursor-crosshair bg-white"
 						aria-label="Drawing canvas"
 					></canvas>
-
-					<!-- Drawing indicator -->
-					<div
-						class="absolute top-3 left-3 flex items-center gap-2 rounded-full bg-slate-900/80 px-3 py-1 text-xs backdrop-blur-sm"
-					>
-						<Pencil class="h-3 w-3 text-purple-400" />
-						<span class="text-slate-300">{currentDrawer} is drawing</span>
-					</div>
 				</div>
 
 				<!-- Drawing Tools (only show for drawer) -->

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { PaintbrushVertical, User, Play, CirclePlus, Hash } from '@lucide/svelte';
@@ -15,16 +14,12 @@
 
 	$effect(() => {
 		if (browser) {
-			untrack(() => {
+			if (!mounted) {
 				username = localStorage.getItem('ink-username') ?? '';
-			});
-			mounted = true;
-		}
-	});
-
-	$effect(() => {
-		if (mounted) {
-			localStorage.setItem('ink-username', username);
+				mounted = true;
+			} else {
+				localStorage.setItem('ink-username', username);
+			}
 		}
 	});
 

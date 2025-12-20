@@ -1,13 +1,21 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { PaintbrushVertical, User, Play, CirclePlus, Hash } from '@lucide/svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
+	import { browser } from '$app/environment';
 
-	let username = $state('');
+	let username = $state(browser ? (localStorage.getItem('ink-username') ?? '') : '');
 
-	function handleSubmit() {
-		console.log('Hello World!');
+	function handlePlayNow() {
+		localStorage.setItem('ink-username', username);
+		goto('/play');
+	}
+
+	function handleSubmit(e: Event) {
+		e.preventDefault();
+		handlePlayNow();
 	}
 </script>
 
@@ -54,6 +62,7 @@
 				type="button"
 				size="lg"
 				disabled={username.length === 0}
+				onclick={handlePlayNow}
 				class="h-12 bg-purple-600 font-semibold text-white shadow-lg shadow-purple-900/50 hover:bg-purple-500 hover:shadow-xl hover:shadow-purple-900/60 focus-visible:ring-purple-500/50"
 			>
 				<Play class="h-5 w-5" aria-hidden="true" />

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { PaintbrushVertical, User, Play, CirclePlus, Hash } from '@lucide/svelte';
+	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
+	import { Label } from '$lib/components/ui/label';
 
 	let username = $state('');
 
@@ -21,9 +23,7 @@
 		</header>
 
 		<form class="w-full max-w-sm" onsubmit={handleSubmit}>
-			<label for="username" class="mb-2 block text-sm font-medium text-slate-300">
-				Your Name
-			</label>
+			<Label for="username" class="mb-2 block text-slate-300">Your Name</Label>
 			<div class="relative">
 				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 					<User class="h-5 w-5 text-slate-400" aria-hidden="true" />
@@ -50,30 +50,35 @@
 		</form>
 
 		<nav class="flex w-full max-w-sm flex-col gap-3" aria-label="Game options">
-			<button
+			<Button
 				type="button"
+				size="lg"
 				disabled={username.length === 0}
-				class="flex items-center justify-center gap-2 rounded-lg bg-purple-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-purple-900/50 transition-all hover:bg-purple-500 hover:shadow-xl hover:shadow-purple-900/60 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-purple-600 disabled:hover:shadow-lg"
+				class="h-12 bg-purple-600 font-semibold text-white shadow-lg shadow-purple-900/50 hover:bg-purple-500 hover:shadow-xl hover:shadow-purple-900/60 focus-visible:ring-purple-500/50"
 			>
 				<Play class="h-5 w-5" aria-hidden="true" />
 				Play Now
-			</button>
-			<button
+			</Button>
+			<Button
 				type="button"
+				variant="outline"
+				size="lg"
 				disabled={username.length === 0}
-				class="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800/50 px-6 py-3 font-medium text-slate-100 transition-all hover:border-slate-500 hover:bg-slate-700/50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-600 disabled:hover:bg-slate-800/50"
+				class="h-11 border-slate-600 bg-slate-800/50 text-slate-100 hover:border-slate-500 hover:bg-slate-700/50 focus-visible:ring-purple-500/50"
 			>
 				<CirclePlus class="h-5 w-5" aria-hidden="true" />
 				Create Lobby
-			</button>
-			<button
+			</Button>
+			<Button
 				type="button"
+				variant="outline"
+				size="lg"
 				disabled={username.length === 0}
-				class="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800/50 px-6 py-3 font-medium text-slate-100 transition-all hover:border-slate-500 hover:bg-slate-700/50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-600 disabled:hover:bg-slate-800/50"
+				class="h-11 border-slate-600 bg-slate-800/50 text-slate-100 hover:border-slate-500 hover:bg-slate-700/50 focus-visible:ring-purple-500/50"
 			>
 				<Hash class="h-5 w-5" aria-hidden="true" />
 				Join with Code
-			</button>
+			</Button>
 		</nav>
 	</div>
 </section>

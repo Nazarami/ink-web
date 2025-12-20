@@ -6,9 +6,12 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
+	import * as Dialog from '$lib/components/ui/dialog';
 
 	let username = $state('');
 	let mounted = $state(false);
+	let lobbyCode = $state('');
+	let joinDialogOpen = $state(false);
 
 	$effect(() => {
 		if (browser) {
@@ -31,6 +34,13 @@
 
 	function handleCreateLobby() {
 		goto('/create');
+	}
+
+	function handleJoinLobby(e: Event) {
+		e.preventDefault();
+		if (lobbyCode.trim()) {
+			goto(`/lobby/${lobbyCode.trim()}`);
+		}
 	}
 
 	function handleSubmit(e: Event) {
@@ -109,16 +119,46 @@
 				<CirclePlus class="h-5 w-5" aria-hidden="true" />
 				Create Lobby
 			</Button>
-			<Button
-				type="button"
-				variant="none"
-				size="lg"
-				disabled={username.length === 0}
-				class="h-11 border border-slate-600 bg-slate-800/50 text-slate-100 hover:border-slate-500 hover:bg-slate-700/50 focus-visible:ring-purple-500/50"
-			>
-				<Hash class="h-5 w-5" aria-hidden="true" />
-				Join with Code
-			</Button>
+			<Dialog.Root bind:open={joinDialogOpen}>
+				<Dialog.Trigger
+					disabled={username.length === 0}
+					class="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-md border border-slate-600 bg-slate-800/50 px-6 text-sm font-medium text-slate-100 transition-all outline-none hover:border-slate-500 hover:bg-slate-700/50 focus-visible:ring-[3px] focus-visible:ring-purple-500/50 disabled:pointer-events-none disabled:opacity-50"
+				>
+					<Hash class="h-5 w-5" aria-hidden="true" />
+					Join with Code
+				</Dialog.Trigger>
+				<Dialog.Content class="border-slate-700 bg-slate-900">
+					<Dialog.Header>
+						<Dialog.Title>Join a Lobby</Dialog.Title>
+						<Dialog.Description class="text-slate-400">
+							Enter the lobby code to join your friends.
+						</Dialog.Description>
+					</Dialog.Header>
+					<form onsubmit={handleJoinLobby} class="space-y-4">
+						<div>
+							<Label for="lobby-code" class="mb-2 block text-slate-300">Lobby Code</Label>
+							<Input
+								type="text"
+								id="lobby-code"
+								bind:value={lobbyCode}
+								placeholder="Enter code"
+								maxlength={10}
+								class="border-slate-700 bg-slate-800/50 text-slate-100 placeholder:text-slate-500 focus-visible:border-purple-500 focus-visible:ring-purple-500/50"
+							/>
+						</div>
+						<Dialog.Footer>
+							<Button
+								type="submit"
+								variant="none"
+								disabled={lobbyCode.trim().length === 0}
+								class="bg-purple-600 font-semibold text-white hover:bg-purple-500 focus-visible:ring-purple-500/50"
+							>
+								Join Lobby
+							</Button>
+						</Dialog.Footer>
+					</form>
+				</Dialog.Content>
+			</Dialog.Root>
 		</nav>
 	</div>
 </section>

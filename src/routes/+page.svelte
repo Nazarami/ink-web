@@ -19,8 +19,13 @@
 		}
 	});
 
+	$effect(() => {
+		if (mounted) {
+			localStorage.setItem('ink-username', username);
+		}
+	});
+
 	function handlePlayNow() {
-		localStorage.setItem('ink-username', username);
 		goto('/play');
 	}
 

@@ -1,12 +1,23 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
 	import { PaintbrushVertical, User, Play, CirclePlus, Hash } from '@lucide/svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
-	import { browser } from '$app/environment';
 
-	let username = $state(browser ? (localStorage.getItem('ink-username') ?? '') : '');
+	let username = $state('');
+	let mounted = $state(false);
+
+	$effect(() => {
+		if (browser) {
+			untrack(() => {
+				username = localStorage.getItem('ink-username') ?? '';
+			});
+			mounted = true;
+		}
+	});
 
 	function handlePlayNow() {
 		localStorage.setItem('ink-username', username);
@@ -24,7 +35,10 @@
 </svelte:head>
 
 <section class="flex min-h-svh items-center justify-center" aria-label="Welcome">
-	<div class="flex flex-col items-center gap-6">
+	<div
+		class="flex flex-col items-center gap-6 transition-opacity duration-200"
+		class:opacity-0={!mounted}
+	>
 		<header class="flex items-center gap-2">
 			<PaintbrushVertical class="h-12 w-12 text-purple-400" aria-hidden="true" />
 			<h1 class="text-5xl font-bold">Ink</h1>

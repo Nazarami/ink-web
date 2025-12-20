@@ -2,16 +2,20 @@
 	import { PaintbrushVertical, User, Play, PlusCircle, Hash } from '@lucide/svelte';
 
 	let username = $state('');
+
+	function handleSubmit() {
+		console.log('Hello World!');
+	}
 </script>
 
 <section class="flex min-h-svh items-center justify-center" aria-label="Welcome">
 	<div class="flex flex-col items-center gap-6">
-		<header class="flex items-center gap-3">
+		<header class="flex items-center gap-2">
 			<PaintbrushVertical class="h-12 w-12 text-purple-400" aria-hidden="true" />
 			<h1 class="text-5xl font-bold">Ink</h1>
 		</header>
 
-		<form class="w-full max-w-sm" onsubmit={(e) => e.preventDefault()}>
+		<form class="w-full max-w-sm" onsubmit={handleSubmit}>
 			<label for="username" class="mb-2 block text-sm font-medium text-slate-300">
 				Your Name
 			</label>

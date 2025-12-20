@@ -127,10 +127,10 @@
 					<Hash class="h-5 w-5" aria-hidden="true" />
 					Join with Code
 				</Dialog.Trigger>
-				<Dialog.Content class="border-slate-700 bg-slate-900">
+				<Dialog.Content>
 					<Dialog.Header>
 						<Dialog.Title>Join a Lobby</Dialog.Title>
-						<Dialog.Description class="text-slate-400">
+						<Dialog.Description>
 							Enter the lobby code to join your friends.
 						</Dialog.Description>
 					</Dialog.Header>

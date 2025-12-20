@@ -145,10 +145,13 @@
 </svelte:head>
 
 <section
-	class="flex min-h-svh flex-col p-4 md:h-svh md:overflow-hidden md:p-4"
+	class="flex min-h-svh flex-col p-4 md:h-svh md:overflow-hidden md:p-6 lg:p-8"
 	aria-label="Game Lobby"
 >
-	<div class="flex flex-col transition-opacity duration-200 md:h-full" class:opacity-0={!mounted}>
+	<div
+		class="mx-auto flex w-full max-w-7xl flex-col transition-opacity duration-200 md:h-full"
+		class:opacity-0={!mounted}
+	>
 		<!-- Header -->
 		<header class="mb-5 flex items-center justify-between md:mb-4">
 			<div class="flex items-center gap-2 md:gap-4">
@@ -200,20 +203,23 @@
 		<!-- Word Display -->
 		<div class="mb-4 text-center md:mb-3">
 			<div
-				class="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/30 px-5 py-3"
+				class="inline-flex flex-col items-center gap-1 rounded-xl border border-slate-700 bg-slate-800/30 px-5 py-3 md:flex-row md:gap-3"
 			>
 				{#if isDrawing}
-					<Pencil class="h-4 w-4 text-purple-400" />
-					<span class="text-sm text-slate-400">Draw:</span>
-					<span class="font-mono text-lg font-bold tracking-wider text-purple-400"
+					<div class="flex items-center gap-2">
+						<Pencil class="h-4 w-4 text-purple-400" />
+						<span class="text-sm text-slate-400">Draw:</span>
+					</div>
+					<span class="font-mono text-xl font-bold tracking-wider text-purple-400 md:text-lg"
 						>{currentWord}</span
 					>
 				{:else}
-					<span class="text-sm text-slate-400">Guess:</span>
-					<span class="font-mono text-lg font-bold tracking-[0.3em] text-slate-100"
+					<span class="text-xs text-slate-500 md:text-sm md:text-slate-400">Guess</span>
+					<span
+						class="font-mono text-base font-bold tracking-[0.25em] text-slate-100 md:text-lg md:tracking-[0.3em]"
 						>{maskedWord}</span
 					>
-					<span class="text-sm text-slate-500">({currentWord.length} letters)</span>
+					<span class="text-xs text-slate-500">({currentWord.length} letters)</span>
 				{/if}
 			</div>
 		</div>

@@ -64,11 +64,17 @@
 					class="h-12 border-slate-700 bg-slate-800/50 pl-10 text-slate-100 placeholder:text-slate-500 focus-visible:border-purple-500 focus-visible:ring-purple-500/50"
 				/>
 			</div>
-			{#if username.length > 0}
-				<p id="username-count" class="mt-1 text-xs text-slate-400" aria-live="polite">
-					{username.length}/20 characters
-				</p>
-			{/if}
+			<div
+				class="grid transition-all duration-200 ease-in-out"
+				class:grid-rows-[1fr]={username.length > 0}
+				class:grid-rows-[0fr]={username.length === 0}
+			>
+				<div class="overflow-hidden">
+					<p id="username-count" class="mt-1 text-xs text-slate-400" aria-live="polite">
+						{username.length}/20 characters
+					</p>
+				</div>
+			</div>
 		</form>
 
 		<nav class="flex w-full max-w-sm flex-col gap-3" aria-label="Game options">

@@ -8,6 +8,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Ink - Draw & Guess Together</title>
+</svelte:head>
+
 <section class="flex min-h-svh items-center justify-center" aria-label="Welcome">
 	<div class="flex flex-col items-center gap-6">
 		<header class="flex items-center gap-2">

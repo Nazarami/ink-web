@@ -33,9 +33,7 @@
 	const inviteLink = $derived(`${browser ? window.location.origin : ''}/lobby/${lobbyCode}`);
 
 	// Stub players list
-	let players = $state([
-		{ id: '1', name: 'You', isHost: true }
-	]);
+	let players = $state([{ id: '1', name: 'You', isHost: true }]);
 
 	// Stub activity log
 	let activityLog = $state<{ id: string; message: string; timestamp: Date }[]>([
@@ -100,10 +98,7 @@
 </svelte:head>
 
 <section class="min-h-svh p-4 md:p-8" aria-label="Create Lobby">
-	<div
-		class="mx-auto max-w-5xl transition-opacity duration-200"
-		class:opacity-0={!mounted}
-	>
+	<div class="mx-auto max-w-5xl transition-opacity duration-200" class:opacity-0={!mounted}>
 		<!-- Header -->
 		<header class="mb-8 flex items-center justify-between">
 			<div class="flex items-center gap-4">
@@ -122,7 +117,9 @@
 					<h1 class="text-2xl font-bold">Create Lobby</h1>
 				</div>
 			</div>
-			<div class="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2">
+			<div
+				class="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2"
+			>
 				<span class="text-sm text-slate-400">Code:</span>
 				<span class="font-mono text-lg font-bold text-purple-400">{lobbyCode}</span>
 			</div>
@@ -134,7 +131,7 @@
 				<!-- Game Settings Card -->
 				<div class="rounded-xl border border-slate-700 bg-slate-800/30 p-6">
 					<h2 class="mb-6 text-lg font-semibold text-slate-100">Game Settings</h2>
-					
+
 					<div class="grid gap-6 sm:grid-cols-2">
 						<!-- Max Players -->
 						<div class="space-y-3">
@@ -234,7 +231,9 @@
 				<!-- Activity Log Card -->
 				<div class="rounded-xl border border-slate-700 bg-slate-800/30 p-6">
 					<h2 class="mb-4 text-lg font-semibold text-slate-100">Activity Log</h2>
-					<div class="h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-700/50 bg-slate-900/50 p-3">
+					<div
+						class="h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-700/50 bg-slate-900/50 p-3"
+					>
 						{#each activityLog as log (log.id)}
 							<div class="flex items-start gap-2 text-sm">
 								<span class="text-slate-500">
@@ -285,14 +284,20 @@
 				<div class="rounded-xl border border-slate-700 bg-slate-800/30 p-6">
 					<div class="mb-4 flex items-center justify-between">
 						<h2 class="text-lg font-semibold text-slate-100">Players</h2>
-						<span class="rounded-full bg-purple-500/20 px-2 py-0.5 text-xs font-medium text-purple-400">
+						<span
+							class="rounded-full bg-purple-500/20 px-2 py-0.5 text-xs font-medium text-purple-400"
+						>
 							{players.length}/{maxPlayers}
 						</span>
 					</div>
 					<ul class="space-y-2">
 						{#each players as player (player.id)}
-							<li class="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-slate-900/50 px-3 py-2">
-								<div class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500/20 text-sm font-medium text-purple-400">
+							<li
+								class="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-slate-900/50 px-3 py-2"
+							>
+								<div
+									class="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500/20 text-sm font-medium text-purple-400"
+								>
 									{player.name.charAt(0).toUpperCase()}
 								</div>
 								<span class="flex-1 text-sm text-slate-200">{player.name}</span>
@@ -302,7 +307,7 @@
 							</li>
 						{/each}
 					</ul>
-					
+
 					<!-- Demo button to simulate player joining -->
 					<Button
 						type="button"

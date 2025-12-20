@@ -45,7 +45,7 @@
 		</header>
 
 		<form class="w-full max-w-sm" onsubmit={handleSubmit}>
-			<Label for="username" class="mb-2 block text-slate-300">Your Name</Label>
+			<Label for="username" class="mb-2 block text-slate-400">Your Name</Label>
 			<div class="relative">
 				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 					<User class="h-5 w-5 text-slate-400" aria-hidden="true" />
@@ -65,7 +65,7 @@
 				/>
 			</div>
 			<div
-				class="grid transition-all duration-200 ease-in-out"
+				class="grid transition-all duration-300 ease-in-out"
 				class:grid-rows-[1fr]={username.length > 0}
 				class:grid-rows-[0fr]={username.length === 0}
 			>

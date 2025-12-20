@@ -16,6 +16,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
+	import { Slider } from '$lib/components/ui/slider';
 
 	// User state
 	let username = $state('');
@@ -136,19 +137,19 @@
 						<!-- Max Players -->
 						<div class="space-y-3">
 							<div class="flex items-center justify-between">
-								<Label for="max-players" class="flex items-center gap-2 text-slate-300">
+								<Label class="flex items-center gap-2 text-slate-300">
 									<Users class="h-4 w-4 text-purple-400" />
 									Max Players
 								</Label>
 								<span class="text-sm font-medium text-purple-400">{maxPlayers}</span>
 							</div>
-							<Input
-								type="range"
-								id="max-players"
+							<Slider
+								type="single"
 								bind:value={maxPlayers}
 								min={2}
 								max={16}
-								class="h-2 cursor-pointer accent-purple-500"
+								step={1}
+								class="slider-custom"
 							/>
 							<div class="flex justify-between text-xs text-slate-500">
 								<span>2</span>
@@ -159,19 +160,19 @@
 						<!-- Rounds -->
 						<div class="space-y-3">
 							<div class="flex items-center justify-between">
-								<Label for="rounds" class="flex items-center gap-2 text-slate-300">
+								<Label class="flex items-center gap-2 text-slate-300">
 									<RotateCcw class="h-4 w-4 text-purple-400" />
 									Rounds
 								</Label>
 								<span class="text-sm font-medium text-purple-400">{rounds}</span>
 							</div>
-							<Input
-								type="range"
-								id="rounds"
+							<Slider
+								type="single"
 								bind:value={rounds}
 								min={1}
 								max={10}
-								class="h-2 cursor-pointer accent-purple-500"
+								step={1}
+								class="slider-custom"
 							/>
 							<div class="flex justify-between text-xs text-slate-500">
 								<span>1</span>
@@ -182,19 +183,19 @@
 						<!-- Word Count -->
 						<div class="space-y-3">
 							<div class="flex items-center justify-between">
-								<Label for="word-count" class="flex items-center gap-2 text-slate-300">
+								<Label class="flex items-center gap-2 text-slate-300">
 									<Type class="h-4 w-4 text-purple-400" />
 									Words to Choose
 								</Label>
 								<span class="text-sm font-medium text-purple-400">{wordCount}</span>
 							</div>
-							<Input
-								type="range"
-								id="word-count"
+							<Slider
+								type="single"
 								bind:value={wordCount}
 								min={1}
 								max={5}
-								class="h-2 cursor-pointer accent-purple-500"
+								step={1}
+								class="slider-custom"
 							/>
 							<div class="flex justify-between text-xs text-slate-500">
 								<span>1</span>
@@ -205,20 +206,19 @@
 						<!-- Draw Time -->
 						<div class="space-y-3">
 							<div class="flex items-center justify-between">
-								<Label for="draw-time" class="flex items-center gap-2 text-slate-300">
+								<Label class="flex items-center gap-2 text-slate-300">
 									<Clock class="h-4 w-4 text-purple-400" />
 									Draw Time
 								</Label>
 								<span class="text-sm font-medium text-purple-400">{drawTime}s</span>
 							</div>
-							<Input
-								type="range"
-								id="draw-time"
+							<Slider
+								type="single"
 								bind:value={drawTime}
 								min={30}
 								max={180}
 								step={10}
-								class="h-2 cursor-pointer accent-purple-500"
+								class="slider-custom"
 							/>
 							<div class="flex justify-between text-xs text-slate-500">
 								<span>30s</span>
@@ -340,3 +340,30 @@
 		</div>
 	</div>
 </section>
+
+<style>
+	:global(.slider-custom [data-slot='slider-track']) {
+		height: 8px;
+		background: rgb(51 65 85 / 0.5);
+	}
+
+	:global(.slider-custom [data-slot='slider-range']) {
+		background: rgb(168 85 247);
+	}
+
+	:global(.slider-custom [data-slot='slider-thumb']) {
+		width: 18px;
+		height: 18px;
+		background: rgb(168 85 247);
+		border: none;
+		box-shadow: 0 2px 4px rgb(0 0 0 / 0.3);
+	}
+
+	:global(.slider-custom [data-slot='slider-thumb']:hover) {
+		background: rgb(192 132 252);
+	}
+
+	:global(.slider-custom [data-slot='slider-thumb']:focus-visible) {
+		box-shadow: 0 0 0 3px rgb(168 85 247 / 0.5);
+	}
+</style>

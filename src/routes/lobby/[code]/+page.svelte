@@ -203,20 +203,20 @@
 		<!-- Word Display -->
 		<div class="mb-4 text-center md:mb-3">
 			<div
-				class="inline-flex flex-col items-center gap-1 rounded-xl border border-slate-700 bg-slate-800/30 px-5 py-3 md:flex-row md:gap-3"
+				class="inline-flex flex-col items-center gap-1 rounded-xl border border-slate-700 bg-slate-800/30 px-5 py-3"
 			>
 				{#if isDrawing}
 					<div class="flex items-center gap-2">
 						<Pencil class="h-4 w-4 text-purple-400" />
-						<span class="text-sm text-slate-400">Draw:</span>
+						<span class="text-xs text-slate-500">Draw</span>
 					</div>
-					<span class="font-mono text-xl font-bold tracking-wider text-purple-400 md:text-lg"
+					<span class="font-mono text-xl font-bold tracking-wider whitespace-nowrap text-purple-400"
 						>{currentWord}</span
 					>
 				{:else}
-					<span class="text-xs text-slate-500 md:text-sm md:text-slate-400">Guess</span>
+					<span class="text-xs text-slate-500">Guess</span>
 					<span
-						class="font-mono text-base font-bold tracking-[0.25em] text-slate-100 md:text-lg md:tracking-[0.3em]"
+						class="font-mono text-xl font-bold tracking-[0.3em] whitespace-nowrap text-slate-100"
 						>{maskedWord}</span
 					>
 					<span class="text-xs text-slate-500">({currentWord.length} letters)</span>

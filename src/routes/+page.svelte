@@ -48,7 +48,7 @@
 		class="flex flex-col items-center gap-6 transition-opacity duration-200"
 		class:opacity-0={!mounted}
 	>
-		<header class="flex select-none items-center gap-2">
+		<header class="flex items-center gap-2 select-none">
 			<PaintbrushVertical class="h-12 w-12 text-purple-400" aria-hidden="true" />
 			<h1 class="text-5xl font-bold">Ink</h1>
 		</header>
@@ -79,14 +79,14 @@
 				class:grid-rows-[0fr]={username.length === 0}
 			>
 				<div class="overflow-hidden">
-					<p id="username-count" class="mt-1 select-none text-xs text-slate-400" aria-live="polite">
+					<p id="username-count" class="mt-1 text-xs text-slate-400 select-none" aria-live="polite">
 						{username.length}/20 characters
 					</p>
 				</div>
 			</div>
 		</form>
 
-		<nav class="flex w-full max-w-sm select-none flex-col gap-3" aria-label="Game options">
+		<nav class="flex w-full max-w-sm flex-col gap-3 select-none" aria-label="Game options">
 			<Button
 				type="button"
 				variant="none"

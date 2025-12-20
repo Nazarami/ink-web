@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PaintbrushVertical, User, Play, PlusCircle, Hash } from '@lucide/svelte';
+	import { PaintbrushVertical, User, Play, CirclePlus, Hash } from '@lucide/svelte';
 
 	let username = $state('');
 
@@ -62,7 +62,7 @@
 				disabled={username.length === 0}
 				class="flex items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800/50 px-6 py-3 font-medium text-slate-100 transition-all hover:border-slate-500 hover:bg-slate-700/50 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-600 disabled:hover:bg-slate-800/50"
 			>
-				<PlusCircle class="h-5 w-5" aria-hidden="true" />
+				<CirclePlus class="h-5 w-5" aria-hidden="true" />
 				Create Lobby
 			</button>
 			<button

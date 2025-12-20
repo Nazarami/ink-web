@@ -60,30 +60,31 @@
 		<nav class="flex w-full max-w-sm flex-col gap-3" aria-label="Game options">
 			<Button
 				type="button"
+				variant="none"
 				size="lg"
 				disabled={username.length === 0}
 				onclick={handlePlayNow}
-				class="h-12 bg-purple-600 font-semibold text-white shadow-md hover:!bg-purple-500 hover:!text-white focus-visible:ring-purple-500/50"
+				class="h-12 bg-purple-600 font-semibold text-white shadow-md hover:bg-purple-500 focus-visible:ring-purple-500/50"
 			>
 				<Play class="h-5 w-5" aria-hidden="true" />
 				Play Now
 			</Button>
 			<Button
 				type="button"
-				variant="outline"
+				variant="none"
 				size="lg"
 				disabled={username.length === 0}
-				class="h-11 border-slate-600 bg-slate-800/50 text-slate-100 hover:!border-slate-500 hover:!bg-slate-700/50 hover:!text-slate-100 focus-visible:ring-purple-500/50"
+				class="h-11 border border-slate-600 bg-slate-800/50 text-slate-100 hover:border-slate-500 hover:bg-slate-700/50 focus-visible:ring-purple-500/50"
 			>
 				<CirclePlus class="h-5 w-5" aria-hidden="true" />
 				Create Lobby
 			</Button>
 			<Button
 				type="button"
-				variant="outline"
+				variant="none"
 				size="lg"
 				disabled={username.length === 0}
-				class="h-11 border-slate-600 bg-slate-800/50 text-slate-100 hover:!border-slate-500 hover:!bg-slate-700/50 hover:!text-slate-100 focus-visible:ring-purple-500/50"
+				class="h-11 border border-slate-600 bg-slate-800/50 text-slate-100 hover:border-slate-500 hover:bg-slate-700/50 focus-visible:ring-purple-500/50"
 			>
 				<Hash class="h-5 w-5" aria-hidden="true" />
 				Join with Code
